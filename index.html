@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsa Anvari Aria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* GitHub Dark Blue (inspired by #0d1117 / #010409) */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0c10;   /* deep dark background */
+            color: #e6edf3;               /* soft white for main text */
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #0d1117;     /* GitHub dark card */
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            border: 1px solid #30363d;      /* subtle border */
+        }
+
+        /* Header Section */
+        .header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #21262d; /* dark border */
+            padding-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: #8b949e;               /* muted grey-blue */
+            margin-bottom: 0.5rem;
+        }
+
+        .title:nth-of-type(2) {            /* university line */
+            color: #c49a6c;                 /* warm accent stays visible */
+            margin-top: -0.2rem;
+        }
+
+        .contact-info {
+            background-color: #161b22;      /* one step darker than card */
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border: 1px solid #30363d;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #c9d1d9;
+        }
+
+        .contact-item a {
+            color: #79c0ff;                 /* bright GitHub link blue */
+            text-decoration: none;
+            border-bottom: 1px dotted #3d444d;
+        }
+
+        .contact-item a:hover {
+            color: #c49a6c;                  /* gold accent on hover */
+            border-bottom-color: #c49a6c;
+        }
+
+        /* Section Styling */
+        .section {
+            margin: 2.5rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #c49a6c 0%, #30363d 100%);
+        }
+
+        /* Publications List – card style with dark theme */
+        .publications-list {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .publications-list li {
+            background-color: #161b22;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid #30363d;
+            position: relative;
+        }
+
+        .publications-list li:hover {
+            background-color: #1f252e;
+            border-color: #c49a6c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(196, 154, 108, 0.15);
+        }
+
+        .publications-list a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            color: #e6edf3;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .publications-list a:hover {
+            color: #c49a6c;
+        }
+
+        .pdf-badge {
+            background-color: #c49a6c;
+            color: #0a0c10;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-left: 1rem;
+            white-space: nowrap;
+        }
+
+        /* note under publications */
+        .section p[style*="margin-top"] {
+            color: #8b949e !important;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Courses Section – two‑column grid */
+        .courses-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .courses-list li {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            font-size: 0.95rem;
+            color: #c9d1d9;
+            transition: all 0.2s ease;
+        }
+
+        .courses-list li:hover {
+            border-color: #c49a6c;
+            background-color: #1f2937;
+            color: #ffffff;
+        }
+
+        .course-code {
+            color: #c49a6c;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer – muted, with subtle separator */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #30363d;
+            text-align: center;
+            color: #6e7681;                 /* GitHub muted */
+            font-size: 0.9rem;
+        }
+
+        /* responsive design – consistent with dark theme */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .courses-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .publications-list a {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .pdf-badge {
+                margin-left: 0;
+            }
+        }
+
+        /* additional small touches for github‑like feel */
+        ::selection {
+            background-color: #264f78;
+            color: #ffffff;
+        }
+        
+        a {
+            transition: color 0.2s, border-color 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Parsa Anvari Aria</h1>
+            <div class="title">
+                Undergraduate Student in Industrial Engineering
+            </div>
+            <div class="title" style="color: #c49a6c; margin-top: -0.2rem;">
+                Sharif University of Technology
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    📧 <a href="mailto:Parsa.AnvariAria.00@sharif.edu">Parsa.AnvariAria.00@sharif.edu</a>
+                </div>
+                <div class="contact-item">
+                    📞 +98 912 963 1385
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Academic Publications Section - with downloadable files -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Personal Academic Publications</h2>
+                <div class="section-line"></div>
+            </div>
+            <ul class="publications-list">
+                <li>
+                    <a href="https://raw.githubusercontent.com/bestparsaaria/parsa-anvari-aria/b592b537cb1e16efc4777416a1ffae6e0ab6beed/HW2_21776_403110014_260220_193249.pdf" target="_blank">
+                        <span>Designing Resilient Systems: Data Platforms, Blockchain, and High-Availability Architectures</span>
+                        <span class="pdf-badge">PDF</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://raw.githubusercontent.com/bestparsaaria/parsa-anvari-aria/b592b537cb1e16efc4777416a1ffae6e0ab6beed/IT_21776_HW3_403110014%202.pdf" target="_blank">
+                        <span>Modern Computing Paradigms: From Virtualization to Intelligent Data Centers</span>
+                        <span class="pdf-badge">PDF</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://raw.githubusercontent.com/bestparsaaria/parsa-anvari-aria/b592b537cb1e16efc4777416a1ffae6e0ab6beed/IT_HW4_21776_403110014.pdf" target="_blank">
+                        <span>Secure and Intelligent Access in 6G Networks: From PBAC to Smart RAN</span>
+                        <span class="pdf-badge">PDF</span>
+                    </a>
+                </li>
+            </ul>
+            <p style="margin-top: 1rem; color: #8b949e; font-style: italic;">
+                ⬇️ Click on any title to download the PDF file
+            </p>
+        </div>
+
+        <!-- Courses Passed at University Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Courses Passed at Sharif University</h2>
+                <div class="section-line"></div>
+            </div>
+            <ul class="courses-list">
+                <li><span class="course-code">·</span> Calculus 1 - Reza Moghaddasi (14031)</li>
+                <li><span class="course-code">·</span> General Physics 1 - Aliakbar Abolhassani (14031)</li>
+                <li><span class="course-code">·</span> Persian Literature - Raziyeh Abadian (14031)</li>
+                <li><span class="course-code">·</span> Basic Programming - Alireza Kadivar (14031)</li>
+                <li><span class="course-code">·</span> Industrial Engineering Drawing - Mobin Mottaghipour (14031)</li>
+                <li><span class="course-code">·</span> Calculus 2 - Reza Moghaddasi (14032)</li>
+                <li><span class="course-code">·</span> Calculus 3 - Reza Moghaddasi (14032)</li>
+                <li><span class="course-code">·</span> Statics & Mechanics of Materials - Masoud Alipour (14032)</li>
+                <li><span class="course-code">·</span> General English - Mohammad Hassan Zadeh (14032)</li>
+                <li><span class="course-code">·</span> General Physics 1 Lab - Nima Khosravi (14032)</li>
+                <li><span class="course-code">·</span> General Physics 2 - Mohammad Ali Ebrahimi Vesaghi (14041)</li>
+                <li><span class="course-code">·</span> Ordinary Differential Equations - Javad Ebrahimi Boroujeni (14041)</li>
+                <li><span class="course-code">·</span> Information Technology - Moslem Habibi (14041)</li>
+                <li><span class="course-code">·</span> General Economics - Mohammad Vesal (14041)</li>
+                <li><span class="course-code">·</span> Accounting Principles - Hojat Rezaei Soufi (14041)</li>
+                <li><span class="course-code">·</span> Physical Education - Behrouz Jahanshiri (14041)</li>
+                <li><span class="course-code">·</span> Manufacturing Processes - Mohammad Mahdi Salehi (14042)</li>
+                <li><span class="course-code">·</span> Statistics and Its Applications - Nafiseh Sedghi (14042)</li>
+                <li><span class="course-code">·</span> Management Information Systems - Moslem Habibi (14042)</li>
+                <li><span class="course-code">·</span> Mathematical Analysis 1 - Reza Moghaddasi (14042)</li>
+                <li><span class="course-code">·</span> System Analysis 1 - Mahdi Bastan (14042)</li>
+                <li><span class="course-code">·</span> Machine Tool Workshop - Mahan Amirnia (14042)</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>© 2026 Parsa Anvari Aria</span> • 
+            <span>Last updated: February 2026</span> • 
+            <span>Sharif University of Technology</span>
+        </div>
+    </div>
+</body>
+</html>
